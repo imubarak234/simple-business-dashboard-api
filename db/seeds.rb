@@ -7,9 +7,11 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 def access()
-  var = [ 'Admin', 'Manager', 'cashier', 'User' ]
+  var = [ 'Admin', 'Manager', 'Cashier', 'Regular User' ]
   var[rand(0.3)]
 end
+
+NUM = 1
 
 require "faker"
 
@@ -31,6 +33,12 @@ end
 15.times do
   staff = Staff.new(
     access_level: access()
-    
+    user_id: NUM
   )
+  NUM += 1
+  staff.save
+end
+
+10.times do
+  
 end
