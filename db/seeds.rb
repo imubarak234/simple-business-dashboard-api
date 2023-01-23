@@ -32,13 +32,38 @@ end
 
 15.times do
   staff = Staff.new(
-    access_level: access()
-    user_id: NUM
+    access_level: access(),
+    user_id: NUM,
   )
   NUM += 1
   staff.save
 end
 
 10.times do
-  
+  faq = Faq.new(
+    question: Faker::Lorem.question(word_count: 11),
+    answer: Faker::Lorem.paragraph(sentence_count: 4),
+    user_id: Faker::Number.between(from: 1, to: 14),
+  )
+  faq.save
+end
+
+15.times do
+  invoice = Invoice.new(
+    cost: Faker::Number.decimal(l_digits: 5, r_digits: 2),
+    date: Faker::Date.between(from: '2019-09-23', to: '2023-09-25'),
+    user_id: Faker::Number.between(from: 1, to: 25),
+    staff_id: Faker::Number.between(from: 1, to: 15),
+  )
+  invoice.save
+end
+
+10.times do
+  event = Event.new(
+    title: Faker::DcComics.title,
+    date: Faker::Date.between(from: '2019-09-23', to: '2023-09-25'),
+    description: Faker::Lorem.paragraph(sentence_count: 4),
+    staff_id: Faker::Number.between(from: 1, to: 15),
+  )
+  event.save
 end
